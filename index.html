@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Desk | Main</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --primary: #0f766e;
+      --accent: #0ea5e9;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --shadow: 0 12px 30px rgba(15, 118, 110, 0.12);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f5f7fb 0%, #eef2ff 50%, #e0f2fe 100%);
+      color: var(--text);
+    }
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      gap: 14px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.4px;
+    }
+    .brand .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(14, 165, 233, 0.15); }
+    .nav-links { display: flex; gap: 14px; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(14, 165, 233, 0.08); }
+    .btn {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), #0ea5e9);
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 18px 36px rgba(14, 165, 233, 0.2); }
+    main { max-width: 1180px; margin: 30px auto 60px; padding: 0 18px; }
+    .hero {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+    .hero h1 { margin: 0; font-size: 28px; letter-spacing: -0.4px; }
+    .hero p { margin: 12px 0 18px; color: var(--muted); line-height: 1.6; }
+    .hero .quick {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .hero .quick button { width: 100%; text-align: center; }
+    .status {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 8px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.12); color: var(--primary); padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 13px; }
+    .list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 12px; border: 1px solid var(--border); border-radius: 12px; background: #f8fafc; }
+    .list span { color: var(--muted); }
+    .badge { padding: 6px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; }
+    .badge.green { background: rgba(16, 185, 129, 0.16); color: #0f766e; }
+    .badge.amber { background: rgba(245, 158, 11, 0.18); color: #b45309; }
+    .badge.red { background: rgba(239, 68, 68, 0.18); color: #b91c1c; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    @media (max-width: 640px) {
+      nav { flex-wrap: wrap; }
+      .hero { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand"><span class="dot"></span>PulseDesk</div>
+      <div class="nav-links">
+        <a href="#">Dashboard</a>
+        <a href="#">Knowledge</a>
+        <a href="#">Reports</a>
+        <a href="ticket.html" class="btn">New Ticket</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>IT Help Desk at a glance</h1>
+        <p>Keep eyes on tickets, SLAs, and quick actions in one clean view. Use this template as a starting point for your own wiring to data.</p>
+        <div class="quick">
+          <button class="btn" onclick="location.href='ticket.html'">Create ticket</button>
+          <button class="btn" style="background: #0f172a; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);">View queue</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="pill">Live SLA</div>
+        <h3>First response</h3>
+        <p style="color: var(--muted); margin: 6px 0 16px;">Average across active tickets</p>
+        <div style="font-size: 32px; font-weight: 800; color: var(--primary);">00:42:18</div>
+        <div style="margin-top: 12px; display: flex; gap: 10px;">
+          <span class="badge green">On track</span>
+          <span class="badge amber">3 close to breach</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="status">
+      <div class="card">
+        <div class="pill">Queues</div>
+        <h3>Tickets by priority</h3>
+        <ul class="list">
+          <li><strong>P1 - Critical</strong><span class="badge red">2</span></li>
+          <li><strong>P2 - High</strong><span class="badge amber">5</span></li>
+          <li><strong>P3 - Normal</strong><span class="badge green">18</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="pill">Activity</div>
+        <h3>Recently updated</h3>
+        <ul class="list">
+          <li><span>#1042 VPN gateway flapping</span><span class="badge amber">Investigating</span></li>
+          <li><span>#1039 Laptop refresh</span><span class="badge green">In progress</span></li>
+          <li><span>#1038 MFA enrollment</span><span class="badge green">In progress</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="pill">Shortcuts</div>
+        <h3>Quick links</h3>
+        <div class="grid-2">
+          <button class="btn" onclick="location.href='ticket.html'">Submit ticket</button>
+          <button class="btn" style="background:#0f172a; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);">Escalate</button>
+          <button class="btn" style="background:#1e3a8a; box-shadow: 0 12px 30px rgba(30, 58, 138, 0.18);">Runbook</button>
+          <button class="btn" style="background:#7c3aed; box-shadow: 0 12px 30px rgba(124, 58, 237, 0.18);">Status page</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
